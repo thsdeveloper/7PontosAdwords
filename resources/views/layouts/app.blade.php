@@ -11,7 +11,7 @@
   <title>{{ config('app.name', 'Laravel') }}</title>
 
   <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
   <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
@@ -19,49 +19,41 @@
 </head>
 <body>
   <v-app id="app" top-toolbar footer v-cloak>
-    <v-toolbar>
-        <v-toolbar-title>
-            {{ config('app.name', 'Laravel') }}
-        </v-toolbar-title>
-        <v-toolbar-items class="hidden-md-and-down">
-            @if (Auth::guest())
-                <v-toolbar-item ripple href="{{ route('login') }}">Login</v-toolbar-item>
-                <v-toolbar-item ripple href="{{ route('register') }}">Register</v-toolbar-item>
-            @else
-                <v-menu bottom left offset-y origin="top right" transition="v-slide-y-transition">
-                    <v-btn dark icon slot="activator">
-                        <v-icon>account_circle</v-icon>
-                    </v-btn>
-                    <v-list>
-                        <v-list-item>
-                            <v-list-tile>
-                                <v-list-tile-title>
-                                    <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                          style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </v-list-tile-title>
-                            </v-list-tile>
-                        </v-list-item>
-                    </v-list>
-                </v-menu>
+    <v-toolbar dark color="primary">
+      <v-toolbar-side-icon></v-toolbar-side-icon>
+      <v-toolbar-title class="white--text">{{ config('app.name', 'Laravel') }}</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn flat>Sair</v-btn>
+        @if (Auth::guest())
+        <v-btn flat>Sasdsdir</v-btn>
+        @else
             @endif
-        </v-toolbar-items>
+      </v-toolbar-items>
+      <v-btn icon>
+        <v-icon>search</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>apps</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>refresh</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>more_vert</v-icon>
+      </v-btn>
     </v-toolbar>
-    <main>
-        <v-content>
-            <v-container fluid>
-                @yield('content')
-            </v-container>
-        </v-content>
-    </main>
-    <v-footer>Footer</v-footer>
+<main>
+  <v-content>
+    <v-container fluid>
+      @yield('content')
+    </v-container>
+  </v-content>
+</main>
+<v-footer class="pa-3">
+  <v-spacer></v-spacer>
+  <div>7Pontos Agência Integrada </div>
+</v-footer>
 </v-app>
 
 <!-- Scripts -->
