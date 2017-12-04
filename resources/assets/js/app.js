@@ -20,6 +20,8 @@ Vue.use(Vuetify);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
+Vue.component('login-form', require('./components/LoginForm.vue'));
+
 const app = new Vue({
     el: '#app'
 });
