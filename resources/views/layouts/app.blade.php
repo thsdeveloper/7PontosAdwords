@@ -19,30 +19,7 @@
 </head>
 <body>
   <v-app id="app" top-toolbar footer v-cloak>
-    <v-toolbar dark color="deep-purple">
-      <v-toolbar-side-icon></v-toolbar-side-icon>
-      <v-toolbar-title class="white--text">{{ config('app.name', 'Laravel') }}</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat>Sair</v-btn>
-        @if (Auth::guest())
-          <v-btn flat>Sasdsdir</v-btn>
-        @else
-        @endif
-      </v-toolbar-items>
-      <v-btn icon>
-        <v-icon>search</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>apps</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>refresh</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>more_vert</v-icon>
-      </v-btn>
-    </v-toolbar>
+    <toolbar-7p :user="{{Auth::user()}}"></toolbar-7p>
     <v-content>
       <v-container fluid>
         @yield('content')

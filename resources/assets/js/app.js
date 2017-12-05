@@ -21,6 +21,8 @@ Vue.use(Vuetify);
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 Vue.component('login-form', require('./components/LoginForm.vue'));
+Vue.component('toolbar-7p', require('./components/Toolbar7p.vue'));
+Vue.component('dialog-confirm-7p', require('./components/DialogConfirm7p.vue'));
 
 const app = new Vue({
     el: '#app'
