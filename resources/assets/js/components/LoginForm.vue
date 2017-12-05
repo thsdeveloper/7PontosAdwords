@@ -1,10 +1,11 @@
 <template>
-    <div class="container">
+    <div class="7p-login-form">
+        <h1>Realize o login</h1>
         <v-form v-model="valid" ref="form" lazy-validation>
-            <v-text-field label="Name" v-model="name" :rules="nameRules" :counter="10" required></v-text-field>
             <v-text-field label="E-mail" v-model="email" :rules="emailRules" required></v-text-field>
+            <v-text-field label="Senha" v-model="password" :rules="nameRules" :counter="6" required></v-text-field>
 
-            <v-checkbox label="Do you agree?" v-model="checkbox" :rules="[v => !!v || 'You must agree to continue!']" required></v-checkbox>
+            <v-checkbox label="Lembrar senha?" v-model="checkbox" :rules="[v => !!v || 'You must agree to continue!']" required></v-checkbox>
 
             <v-btn @click="submit" :disabled="!valid">entrar</v-btn>
             <v-btn @click="clear">limpar</v-btn>
@@ -17,15 +18,15 @@ export default {
     data () {
         return {
             valid: true,
-            name: '',
+            password: '',
             nameRules: [
-                (v) => !!v || 'Name is required',
-                (v) => v && v.length <= 10 || 'Name must be less than 10 characters'
+                (v) => !!v || 'Senha é obrigatória',
+                (v) => v && v.length >= 6 || 'A senha deve conter mais de 6 caracteres'
             ],
             email: '',
             emailRules: [
-                (v) => !!v || 'E-mail is required',
-                (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+                (v) => !!v || 'E-mail é obrigatório',
+                (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail não é valido'
             ],
             select: null,
             items: [
@@ -42,10 +43,8 @@ export default {
             if (this.$refs.form.validate()) {
                 // Native form submission is not yet supported
                 axios.post('/login', {
-                    name: this.name,
                     email: this.email,
-                    select: this.select,
-                    checkbox: this.checkbox
+                    password: this.password,
                 })
             }
         },
