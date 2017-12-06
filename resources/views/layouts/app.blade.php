@@ -19,7 +19,12 @@
 </head>
 <body>
   <v-app id="app" top-toolbar footer v-cloak>
-    <toolbar-7p :user="{{Auth::user()}}"></toolbar-7p>
+    @if (Auth::guest())
+
+    @else
+        <toolbar-7p :user="{{Auth::user()}}"></toolbar-7p>
+    @endif
+
     <v-content>
       <v-container fluid>
         @yield('content')
